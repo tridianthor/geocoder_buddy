@@ -62,6 +62,7 @@ class Address {
     required this.road,
     required this.village,
     required this.county,
+    required this.city,
     required this.stateDistrict,
     required this.state,
     required this.iso31662Lvl4,
@@ -73,6 +74,7 @@ class Address {
   String road;
   String village;
   String county;
+  String city;
   String stateDistrict;
   String state;
   String iso31662Lvl4;
@@ -84,6 +86,7 @@ class Address {
         road: json["road"],
         village: json["village"],
         county: json["county"],
+        city: json["city"],
         stateDistrict: json["state_district"],
         state: json["state"],
         iso31662Lvl4: json["ISO3166-2-lvl4"],
@@ -96,6 +99,7 @@ class Address {
         "road": road,
         "village": village,
         "county": county,
+        "city": city,
         "state_district": stateDistrict,
         "state": state,
         "ISO3166-2-lvl4": iso31662Lvl4,
