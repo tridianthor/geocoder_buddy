@@ -1,8 +1,8 @@
 class GBLatLng {
   GBLatLng({
-    required this.lat,
-    required this.lng,
+    this.lat,
+    this.lng,
   });
-  double lat;
-  double lng;
+  double? lat;
+  double? lng;
 }

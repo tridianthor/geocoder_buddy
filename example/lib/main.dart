@@ -45,23 +45,30 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       isSearching = true;
     });
-    List<GBSearchData> data = await GeocoderBuddy.query(query);
-    setState(() {
-      isSearching = false;
-      searchItem = data;
-    });
+    List<GBSearchData>? data = await GeocoderBuddy.query(query);
+    if (data != null) {
+      setState(() {
+        isSearching = false;
+        searchItem = data;
+      });
+    } else {
+      //error
+    }
   }
 
   getAddressDetails(GBLatLng pos) async {
     setState(() {
       isLoading = true;
     });
-    GBData data = await GeocoderBuddy.findDetails(pos);
-    setState(() {
-      isLoading = false;
-      details = data.toJson();
-    });
-    print(data.address.village);
+    GBData? data = await GeocoderBuddy.findDetails(pos);
+    if (data != null) {
+      setState(() {
+        isLoading = false;
+        details = data.toJson();
+      });
+    } else {
+      //error
+    }
   }
 
   @override
@@ -78,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Text(
                 "Search Location",
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
               Container(
                 padding: const EdgeInsets.all(20),
@@ -115,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             data: item,
                                           )));
                             },
-                            title: Text(item.displayName),
+                            title: Text(item.displayName! ?? ""),
                           );
                         })
                     : const Center(
@@ -127,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Text(
                 "Lat/Lng to Details",
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
               Container(
                 padding: const EdgeInsets.all(20),

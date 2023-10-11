@@ -8,24 +8,24 @@ String bgSearchDataToJson(List<GBSearchData> data) =>
 
 class GBSearchData {
   GBSearchData({
-    required this.placeId,
-    required this.id,
-    required this.boundingbox,
-    required this.lat,
-    required this.lon,
-    required this.displayName,
-    required this.placeRank,
-    required this.importance,
+    this.placeId,
+    this.id,
+    this.boundingbox,
+    this.lat,
+    this.lon,
+    this.displayName,
+    this.placeRank,
+    this.importance,
   });
 
-  int placeId;
-  int id;
-  List<String> boundingbox;
-  String lat;
-  String lon;
-  String displayName;
-  int placeRank;
-  double importance;
+  int? placeId;
+  int? id;
+  List<String>? boundingbox;
+  String? lat;
+  String? lon;
+  String? displayName;
+  int? placeRank;
+  double? importance;
 
   factory GBSearchData.fromJson(Map<String, dynamic> json) => GBSearchData(
         placeId: json["place_id"],
@@ -41,7 +41,9 @@ class GBSearchData {
   Map<String, dynamic> toJson() => {
         "place_id": placeId,
         "osm_id": id,
-        "boundingbox": List<dynamic>.from(boundingbox.map((x) => x)),
+        "boundingbox": boundingbox != null
+            ? List<dynamic>.from(boundingbox!.map((x) => x))
+            : null,
         "lat": lat,
         "lon": lon,
         "display_name": displayName,

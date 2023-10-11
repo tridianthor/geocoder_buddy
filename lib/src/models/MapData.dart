@@ -9,28 +9,28 @@ String mapDataToJson(List<MapData> data) =>
 
 class MapData {
   MapData({
-    required this.placeId,
-    required this.licence,
-    required this.osmType,
-    required this.osmId,
-    required this.boundingbox,
-    required this.lat,
-    required this.lon,
-    required this.displayName,
-    required this.placeRank,
-    required this.importance,
+    this.placeId,
+    this.licence,
+    this.osmType,
+    this.osmId,
+    this.boundingbox,
+    this.lat,
+    this.lon,
+    this.displayName,
+    this.placeRank,
+    this.importance,
   });
 
-  int placeId;
-  String licence;
-  String osmType;
-  int osmId;
-  List<String> boundingbox;
-  String lat;
-  String lon;
-  String displayName;
-  int placeRank;
-  double importance;
+  int? placeId;
+  String? licence;
+  String? osmType;
+  int? osmId;
+  List<String>? boundingbox;
+  String? lat;
+  String? lon;
+  String? displayName;
+  int? placeRank;
+  double? importance;
 
   factory MapData.fromJson(Map<String, dynamic> json) => MapData(
         placeId: json["place_id"],
@@ -50,7 +50,9 @@ class MapData {
         "licence": licence,
         "osm_type": osmType,
         "osm_id": osmId,
-        "boundingbox": List<dynamic>.from(boundingbox.map((x) => x)),
+        "boundingbox": boundingbox != null
+            ? List<dynamic>.from(boundingbox!.map((x) => x))
+            : null,
         "lat": lat,
         "lon": lon,
         "display_name": displayName,
