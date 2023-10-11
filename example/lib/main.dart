@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:example/SearchDataDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder_buddy/geocoder_buddy.dart';
@@ -46,6 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
       isSearching = true;
     });
     List<GBSearchData>? data = await GeocoderBuddy.query(query);
+    GBData? searchData = await GeocoderBuddy.searchToGBData(data!.single);
+    log("search data: $searchData");
     if (data != null) {
       setState(() {
         isSearching = false;
@@ -61,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       isLoading = true;
     });
     GBData? data = await GeocoderBuddy.findDetails(pos);
+
     if (data != null) {
       setState(() {
         isLoading = false;

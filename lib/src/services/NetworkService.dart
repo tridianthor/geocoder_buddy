@@ -14,7 +14,6 @@ class NetworkService {
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
       var data = await response.stream.bytesToString();
-      log("data from api: $data");
       return mapDataFromJson(data);
     } else {
       throw Exception(response.reasonPhrase);

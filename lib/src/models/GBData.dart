@@ -57,6 +57,11 @@ class GBData {
             ? List<dynamic>.from(boundingbox!.map((x) => x))
             : null,
       };
+
+  @override
+  String toString() {
+    return "lat: $lat, long: $lon, address: $address";
+  }
 }
 
 class Address {
@@ -117,4 +122,9 @@ class Address {
         "country": country,
         "country_code": countryCode,
       };
+
+  @override
+  String toString() {
+    return "road: $road, village: $village, county: $county, city: $city, town: $town, municipality: $municipality";
+  }
 }
